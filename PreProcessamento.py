@@ -60,6 +60,24 @@ X_scaled = scaler.fit_transform(X)
 X_scaled_df = pd.DataFrame(X_scaled, columns=features)
 print(X_scaled_df.head())
 
+# Gráficos comparativos antes e depois do pré-processamento
+print("\n--- Plotando gráficos comparativos antes e depois do pré-processamento ---")
+
+fig, axes = plt.subplots(2, len(features), figsize=(22, 8))
+for i, feat in enumerate(features):
+    # Antes do pré-processamento
+    sns.histplot(df[feat], kde=True, ax=axes[0, i], color='skyblue')
+    axes[0, i].set_title(f"{feat} (Original)")
+    # Depois do pré-processamento
+    sns.histplot(X_scaled_df[feat], kde=True, ax=axes[1, i], color='salmon')
+    axes[1, i].set_title(f"{feat} (Normalizado)")
+
+axes[0,0].set_ylabel("Antes")
+axes[1,0].set_ylabel("Depois")
+plt.tight_layout()
+plt.show()
+
+
 # 6. Divisão dos dados em conjuntos de treino e teste (80%/20%)
 print("\n--- Dividindo os dados em conjuntos de treino e teste ---")
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
@@ -71,6 +89,7 @@ print(f"Tamanho do conjunto de teste (y_test): {y_test.shape}")
 
 print("\n--- Pré-processamento concluído com sucesso! ---")
 
+print("\n--- Plotando gráficos para análise ---")
 
 sns.set(style="whitegrid", palette="muted")
 
