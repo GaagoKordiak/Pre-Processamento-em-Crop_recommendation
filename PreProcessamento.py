@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # 1. Carregar os dados
-# O arquivo "Crop_recommendation.csv" deve estar no mesmo diretório
+# O arquivo "Crop_recommendation.csv" esta no mesmo diretório
 df = pd.read_csv('Crop_recommendation.csv')
 
 # Exibir as primeiras linhas e informações básicas do dataset
@@ -21,11 +21,10 @@ print(df.describe())
 # Verificando a quantidade de valores nulos
 print("\n--- Verificando valores ausentes ---")
 print(df.isnull().sum())
-# Neste dataset específico, não há valores ausentes.
+# Neste dataset não há valores ausentes.
 # Se houvesse, poderíamos usar df.fillna(df.mean()) para preenchê-los com a média, por exemplo.
-# A decisão de como tratar nulos depende da análise exploratória dos dados.
 
-# 3. Criação de novas variáveis derivadas originais
+# 3. Criação de novas variáveis derivadas das originais
 # 'índice de umidade_temperatura': A relação entre umidade e temperatura pode ser um bom indicador.
 # 'índice_NPK': Uma média ponderada dos principais nutrientes (Nitrogênio, Fósforo, Potássio).
 print("\n--- Criando novas variáveis ---")
